@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/tiagoalmeidadarosa/scoreboard-nextjs#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.3.0",
     "next": "^10.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
