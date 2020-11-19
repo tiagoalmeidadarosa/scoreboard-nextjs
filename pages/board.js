@@ -8,14 +8,45 @@ function Home() {
     const [setA, setSetA] = useState(0);
     const [setB, setSetB] = useState(0);
 
-    function addPointA() {
-        setPointA(pointA + 1);
+    function removePointA() {
+        if(pointA > 0) {
+            setPointA(pointA - 1);
+        }
+    }
 
-        if(pointA >= 25 && (pointA - pointB >= 2)) {
+    function addPointA() {
+        var value = pointA + 1;
+        setPointA(value);
+
+        if(value >= 25 && (value - pointB >= 2)) {
             setPointA(0);
             setPointB(0);
             setSetA(setA + 1);
         }
+    }
+
+    function removePointB() {
+        if(pointB > 0) {
+            setPointB(pointB - 1);
+        }
+    }
+
+    function addPointB() {
+        var value = pointB + 1;
+        setPointB(value);
+
+        if(value >= 25 && (value - pointA >= 2)) {
+            setPointA(0);
+            setPointB(0);
+            setSetB(setB + 1);
+        }
+    }
+
+    function reset() {
+        setPointA(0);
+        setPointB(0);
+        setSetA(0);
+        setSetB(0);
     }
 
     return (
@@ -50,21 +81,21 @@ function Home() {
                 <tr />
                 <tr>
                     <td>
-                        <MinusSquareFilled />
+                        <MinusSquareFilled onClick={removePointA} />
                     </td>
                     <td>
                         <PlusSquareFilled onClick={addPointA} />
                     </td>
 
                     <td colSpan="2">
-                        <ReloadOutlined />
+                        <ReloadOutlined onClick={reset} />
                     </td>
 
                     <td>
-                        <MinusSquareFilled />
+                        <MinusSquareFilled onClick={removePointB} />
                     </td>
                     <td>
-                        <PlusSquareFilled />
+                        <PlusSquareFilled onClick={addPointB} />
                     </td>
                 </tr>
             </table>
