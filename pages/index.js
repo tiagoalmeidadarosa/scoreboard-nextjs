@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import GlobalStyle from '../components/GlobalStyles';
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
@@ -57,7 +56,6 @@ function Board() {
 
     return (
         <div style={{textAlign:'center', display:'flex', justifyContent:'center', alignItems:'center', height: '50vh'}}>
-            <GlobalStyle blackColor />
             <table>
                 <Header />
 
@@ -68,7 +66,9 @@ function Board() {
                     <Set value={setB} />
                     <Point value={pointB} />
                 </tr>
+
                 <tr />
+                
                 <tr>
                     <ButtonMinus onClick={removePointA} />
                     <ButtonPlus onClick={addPointA} />
