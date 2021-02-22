@@ -1,16 +1,21 @@
 import React from 'react';
+import styled from 'styled-components'
+
+const Span = styled.span`
+  font-size: 50px;
+`
 
 function Header() {
     return (
         <tr>
             <td colSpan="2">
-                <span style={{ fontSize: '50px' }}>TIME A</span>
+                <Span>TIME A</Span>
             </td>
             <td colSpan="2">
                 x
             </td>
             <td colSpan="2">
-                <span style={{ fontSize: '50px' }}>TIME B</span>
+                <Span>TIME B</Span>
             </td>
         </tr>
     )

@@ -1,11 +1,20 @@
 import React from 'react';
 import { useState } from 'react';
+import styled from 'styled-components'
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
 import ButtonMinus from '../components/ButtonMinus';
 import ButtonPlus from '../components/ButtonPlus';
 import ButtonReload from '../components/ButtonReload';
+
+const Div = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+`
 
 function Board() {
     const [pointA, setPointA] = useState(0);
@@ -55,7 +64,7 @@ function Board() {
     }    
 
     return (
-        <div style={{textAlign:'center', display:'flex', justifyContent:'center', alignItems:'center', height: '50vh'}}>
+        <Div>
             <table>
                 <Header />
 
@@ -66,9 +75,7 @@ function Board() {
                     <Set value={setB} />
                     <Point value={pointB} />
                 </tr>
-
                 <tr />
-                
                 <tr>
                     <ButtonMinus onClick={removePointA} />
                     <ButtonPlus onClick={addPointA} />
@@ -79,7 +86,7 @@ function Board() {
                     <ButtonPlus onClick={addPointB} />
                 </tr>
             </table>
-        </div>
+        </Div>
     )
 }
 
