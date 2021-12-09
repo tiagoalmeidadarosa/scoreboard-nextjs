@@ -17,77 +17,77 @@ const Div = styled.div`
 `
 
 function Board() {
-    const [pointA, setPointA] = useState(0);
-    const [pointB, setPointB] = useState(0);
-    const [setA, setSetA] = useState(0);
-    const [setB, setSetB] = useState(0);
+  const [pointA, setPointA] = useState(0);
+  const [pointB, setPointB] = useState(0);
+  const [setA, setSetA] = useState(0);
+  const [setB, setSetB] = useState(0);
 
-    function removePointA() {
-        if(pointA > 0) {
-            setPointA(pointA - 1);
-        }
+  function removePointA() {
+    if(pointA > 0) {
+        setPointA(pointA - 1);
     }
+  }
 
-    function addPointA() {
-        var value = pointA + 1;
-        setPointA(value);
+  function addPointA() {
+    var value = pointA + 1;
+    setPointA(value);
 
-        if(value >= 25 && (value - pointB >= 2)) {
-            setPointA(0);
-            setPointB(0);
-            setSetA(setA + 1);
-        }
-    }
-
-    function removePointB() {
-        if(pointB > 0) {
-            setPointB(pointB - 1);
-        }
-    }
-
-    function addPointB() {
-        var value = pointB + 1;
-        setPointB(value);
-
-        if(value >= 25 && (value - pointA >= 2)) {
-            setPointA(0);
-            setPointB(0);
-            setSetB(setB + 1);
-        }
-    }
-
-    function reset() {
+    if(value >= 25 && (value - pointB >= 2)) {
         setPointA(0);
         setPointB(0);
-        setSetA(0);
-        setSetB(0);
-    }    
+        setSetA(setA + 1);
+    }
+  }
 
-    return (
-        <Div>
-            <table>
-                <Header />
+  function removePointB() {
+    if(pointB > 0) {
+        setPointB(pointB - 1);
+    }
+  }
 
-                <tr rowSpan="2">
-                    <Point value={pointA} />
-                    <Set value={setA} />
+  function addPointB() {
+    var value = pointB + 1;
+    setPointB(value);
 
-                    <Set value={setB} />
-                    <Point value={pointB} />
-                </tr>
-                <tr />
-                <tr>
-                    <ButtonMinus onClick={removePointA} />
-                    <ButtonPlus onClick={addPointA} />
+    if(value >= 25 && (value - pointA >= 2)) {
+        setPointA(0);
+        setPointB(0);
+        setSetB(setB + 1);
+    }
+  }
 
-                    <ButtonReload onClick={reset} />
-                    
-                    <ButtonMinus onClick={removePointB} />
-                    <ButtonPlus onClick={addPointB} />
-                </tr>
-            </table>
-        </Div>
-    )
+  function reset() {
+    setPointA(0);
+    setPointB(0);
+    setSetA(0);
+    setSetB(0);
+  }    
+
+  return (
+    <Div>
+      <table>
+        <Header />
+
+        <tr rowSpan="2">
+          <Point value={pointA} />
+          <Set value={setA} />
+
+          <Set value={setB} />
+          <Point value={pointB} />
+        </tr>
+        <tr />
+        <tr>
+          <ButtonMinus onClick={removePointA} />
+          <ButtonPlus onClick={addPointA} />
+
+          <ButtonReload onClick={reset} />
+          
+          <ButtonMinus onClick={removePointB} />
+          <ButtonPlus onClick={addPointB} />
+        </tr>
+      </table>
+    </Div>
+  )
 }
 
 export default Board

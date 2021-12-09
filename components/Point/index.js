@@ -6,11 +6,11 @@ const Span = styled.span`
 `
 
 function Point(props) {
-    return (
-        <td rowSpan="2" colSpan="2">
-            <Span>{props.value}</Span>
-        </td>
-    )
+  return (
+    <td rowSpan="2" colSpan="2">
+      <Span>{props.value}</Span>
+    </td>
+  )
 }
 
 export default Point

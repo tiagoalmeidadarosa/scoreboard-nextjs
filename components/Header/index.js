@@ -6,19 +6,19 @@ const Span = styled.span`
 `
 
 function Header() {
-    return (
-        <tr>
-            <td colSpan="2">
-                <Span>TIME A</Span>
-            </td>
-            <td colSpan="2">
-                x
-            </td>
-            <td colSpan="2">
-                <Span>TIME B</Span>
-            </td>
-        </tr>
-    )
+  return (
+    <tr>
+      <td colSpan="2">
+        <Span>TIME A</Span>
+      </td>
+      <td colSpan="2">
+        x
+      </td>
+      <td colSpan="2">
+        <Span>TIME B</Span>
+      </td>
+    </tr>
+  )
 }
 
 export default Header
