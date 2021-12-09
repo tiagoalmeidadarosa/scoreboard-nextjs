@@ -1,74 +1,66 @@
 import React from 'react';
 import { useState } from 'react';
-import styled from 'styled-components'
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
 import ButtonMinus from '../components/ButtonMinus';
 import ButtonPlus from '../components/ButtonPlus';
 import ButtonReload from '../components/ButtonReload';
+import { Container } from './style';
 
-const Div = styled.div`
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-`
-
-function Board() {
+const Board = () => {
   const [pointA, setPointA] = useState(0);
   const [pointB, setPointB] = useState(0);
   const [setA, setSetA] = useState(0);
   const [setB, setSetB] = useState(0);
 
-  function removePointA() {
-    if(pointA > 0) {
-        setPointA(pointA - 1);
+  const removePointA = () => {
+    if (pointA > 0) {
+      setPointA(pointA - 1);
     }
   }
 
-  function addPointA() {
+  const addPointA = () => {
     var value = pointA + 1;
     setPointA(value);
 
-    if(value >= 25 && (value - pointB >= 2)) {
-        setPointA(0);
-        setPointB(0);
-        setSetA(setA + 1);
+    if (value >= 25 && (value - pointB >= 2)) {
+      setPointA(0);
+      setPointB(0);
+      setSetA(setA + 1);
     }
   }
 
-  function removePointB() {
-    if(pointB > 0) {
-        setPointB(pointB - 1);
+  const removePointB = () => {
+    if (pointB > 0) {
+      setPointB(pointB - 1);
     }
   }
 
-  function addPointB() {
+  const addPointB = () => {
     var value = pointB + 1;
     setPointB(value);
 
-    if(value >= 25 && (value - pointA >= 2)) {
-        setPointA(0);
-        setPointB(0);
-        setSetB(setB + 1);
+    if (value >= 25 && (value - pointA >= 2)) {
+      setPointA(0);
+      setPointB(0);
+      setSetB(setB + 1);
     }
   }
 
-  function reset() {
+  const reset = () => {
     setPointA(0);
     setPointB(0);
     setSetA(0);
     setSetB(0);
-  }    
+  }
 
   return (
-    <Div>
+    <Container>
       <table>
         <Header />
 
-        <tr rowSpan="2">
+        <tr>
           <Point value={pointA} />
           <Set value={setA} />
 
@@ -81,12 +73,12 @@ function Board() {
           <ButtonPlus onClick={addPointA} />
 
           <ButtonReload onClick={reset} />
-          
+
           <ButtonMinus onClick={removePointB} />
           <ButtonPlus onClick={addPointB} />
         </tr>
       </table>
-    </Div>
+    </Container>
   )
 }
 
