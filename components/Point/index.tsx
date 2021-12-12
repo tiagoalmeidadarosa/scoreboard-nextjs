@@ -1,5 +1,5 @@
 import React from 'react';
-import { Span } from '../Header/style';
+import { Span } from './styles';
 
 interface PointProps {
   value: number;

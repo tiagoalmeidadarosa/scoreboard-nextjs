@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonReloadOutlined } from './style';
+import { ButtonReloadOutlined } from './styles';
 
 interface ButtonReloadProps {
   onClick: () => void;

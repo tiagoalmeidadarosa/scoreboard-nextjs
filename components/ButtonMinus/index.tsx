@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonMinusSquareFilled } from './style';
+import { ButtonMinusSquareFilled } from './styles';
 
 interface ButtonMinusProps {
   onClick: () => void;

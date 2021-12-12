@@ -7,12 +7,15 @@ import ButtonMinus from '../components/ButtonMinus';
 import ButtonPlus from '../components/ButtonPlus';
 import ButtonReload from '../components/ButtonReload';
 import { Container } from './style';
+import { Result } from './interfaces';
+import Results from '../components/Results';
 
 const Board = () => {
-  const [pointA, setPointA] = useState(0);
-  const [pointB, setPointB] = useState(0);
-  const [setA, setSetA] = useState(0);
-  const [setB, setSetB] = useState(0);
+  const [pointA, setPointA] = useState<number>(0);
+  const [pointB, setPointB] = useState<number>(0);
+  const [setA, setSetA] = useState<number>(0);
+  const [setB, setSetB] = useState<number>(0);
+  const [results, setResults] = useState<Result[]>([]);
 
   const removePointA = () => {
     if (pointA > 0) {
@@ -25,9 +28,10 @@ const Board = () => {
     setPointA(value);
 
     if (value >= 25 && (value - pointB >= 2)) {
+      setSetA(setA + 1);
+      setResults(prevState => [ ...prevState,  { pointA: pointA, pointB: pointB }]);
       setPointA(0);
       setPointB(0);
-      setSetA(setA + 1);
     }
   }
 
@@ -42,9 +46,10 @@ const Board = () => {
     setPointB(value);
 
     if (value >= 25 && (value - pointA >= 2)) {
+      setSetB(setB + 1);
+      setResults(prevState => [ ...prevState,  { pointA: pointA, pointB: pointB }]);
       setPointA(0);
       setPointB(0);
-      setSetB(setB + 1);
     }
   }
 
@@ -53,6 +58,7 @@ const Board = () => {
     setPointB(0);
     setSetA(0);
     setSetB(0);
+    setResults([]);
   }
 
   return (
@@ -78,6 +84,9 @@ const Board = () => {
           <ButtonPlus onClick={addPointB} />
         </tr>
       </table>
+
+      <Results values={results} />
+
     </Container>
   )
 }

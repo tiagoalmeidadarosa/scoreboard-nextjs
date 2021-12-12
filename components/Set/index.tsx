@@ -1,5 +1,5 @@
 import React from 'react';
-import { Span } from './style';
+import { Span } from './styles';
 
 interface SetProps {
   value: number;
