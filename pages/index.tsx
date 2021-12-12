@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import Image from "next/image"
+import Image from "next/image";
+import styled from 'styled-components';
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
@@ -8,9 +9,21 @@ import MinusButton from '../components/MinusButton';
 import PlusButton from '../components/PlusButton';
 import ReloadButton from '../components/ReloadButton';
 import SwapButton from '../components/SwapButton';
-import { Container } from './style';
-import { Result } from './interfaces';
 import Results from '../components/Results';
+
+const Container = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+`;
+
+interface Result {
+  pointA: number;
+  pointB: number;
+};
 
 const Board = () => {
   const [pointA, setPointA] = useState<number>(0);
