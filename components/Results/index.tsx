@@ -1,5 +1,5 @@
 import React from 'react';
-import { Result } from '../../pages/interfaces';
+import { Result } from '../../pages/index';
 import { Span, Container } from './styles';
 
 interface ResultsProps {
