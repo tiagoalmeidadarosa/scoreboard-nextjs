@@ -1,4 +1,5 @@
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import Head from 'next/head';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -27,6 +28,9 @@ const theme = {
 export default function App({ Component, pageProps }) {
   return (
     <>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <GlobalStyle blackColor />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />

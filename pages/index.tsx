@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Image from "next/image"
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
@@ -83,6 +84,13 @@ const Board = () => {
     <Container>
       <table>
         <tbody>
+          <tr>
+            <td colSpan={2} />
+            <td colSpan={2}>
+              <Image src="/favicon.png" width="32" height="32" />
+            </td>
+            <td colSpan={2} />
+          </tr>
           <tr>
             <td colSpan={2} />
             <SwapButton onClick={swapPoints} />
