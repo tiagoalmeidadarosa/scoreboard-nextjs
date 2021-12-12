@@ -10,7 +10,7 @@ const Results = (props: ResultsProps) => {
   return (
     <Container>
       {props.values.map((value, i) => (
-        <div>
+        <div key={`result_${i}`}>
           <Span>{value.pointA}</Span> x <Span>{value.pointB}</Span>
         </div>
       ))}

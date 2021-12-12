@@ -3,9 +3,10 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
-import ButtonMinus from '../components/ButtonMinus';
-import ButtonPlus from '../components/ButtonPlus';
-import ButtonReload from '../components/ButtonReload';
+import MinusButton from '../components/MinusButton';
+import PlusButton from '../components/PlusButton';
+import ReloadButton from '../components/ReloadButton';
+import SwapButton from '../components/SwapButton';
 import { Container } from './style';
 import { Result } from './interfaces';
 import Results from '../components/Results';
@@ -29,7 +30,7 @@ const Board = () => {
 
     if (value >= 25 && (value - pointB >= 2)) {
       setSetA(setA + 1);
-      setResults(prevState => [ ...prevState,  { pointA: pointA, pointB: pointB }]);
+      setResults(prevState => [ ...prevState,  { pointA: value, pointB: pointB }]);
       setPointA(0);
       setPointB(0);
     }
@@ -47,13 +48,13 @@ const Board = () => {
 
     if (value >= 25 && (value - pointA >= 2)) {
       setSetB(setB + 1);
-      setResults(prevState => [ ...prevState,  { pointA: pointA, pointB: pointB }]);
+      setResults(prevState => [ ...prevState,  { pointA: pointA, pointB: value }]);
       setPointA(0);
       setPointB(0);
     }
   }
 
-  const reset = () => {
+  const resetPoints = () => {
     setPointA(0);
     setPointB(0);
     setSetA(0);
@@ -61,28 +62,53 @@ const Board = () => {
     setResults([]);
   }
 
+  const swapPoints = () => {
+    var pA = pointA;
+    var pB = pointB;
+    var sA = setA;
+    var sB = setB;
+
+    setPointA(pB);
+    setPointB(pA);
+    setSetA(sB);
+    setSetB(sA);
+
+    var r = [];
+    results.forEach((result) => r.push({ pointA: result.pointB, pointB: result.pointA }));
+
+    setResults(r);
+  }
+
   return (
     <Container>
       <table>
-        <Header />
+        <tbody>
+          <tr>
+            <td colSpan={2} />
+            <SwapButton onClick={swapPoints} />
+            <td colSpan={2} />
+          </tr>
 
-        <tr>
-          <Point value={pointA} />
-          <Set value={setA} />
+          <Header />
 
-          <Set value={setB} />
-          <Point value={pointB} />
-        </tr>
-        <tr />
-        <tr>
-          <ButtonMinus onClick={removePointA} />
-          <ButtonPlus onClick={addPointA} />
+          <tr>
+            <Point value={pointA} />
+            <Set value={setA} />
 
-          <ButtonReload onClick={reset} />
+            <Set value={setB} />
+            <Point value={pointB} />
+          </tr>
+          <tr />
+          <tr>
+            <MinusButton onClick={removePointA} />
+            <PlusButton onClick={addPointA} />
 
-          <ButtonMinus onClick={removePointB} />
-          <ButtonPlus onClick={addPointB} />
-        </tr>
+            <ReloadButton onClick={resetPoints} />
+
+            <MinusButton onClick={removePointB} />
+            <PlusButton onClick={addPointB} />
+          </tr>
+        </tbody>
       </table>
 
       <Results values={results} />
