@@ -1,24 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
 import Image from "next/image";
-import styled from 'styled-components';
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
 import MinusButton from '../components/MinusButton';
 import PlusButton from '../components/PlusButton';
 import ReloadButton from '../components/ReloadButton';
-import SwapButton from '../components/SwapButton';
 import Results from '../components/Results';
-
-const Container = styled.div`
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  flex-direction: column;
-`;
+import * as S from './styles';
 
 export interface Result {
   pointA: number;
@@ -94,7 +84,7 @@ const Board = () => {
   }
 
   return (
-    <Container>
+    <S.Container>
       <table>
         <tbody>
           <tr>
@@ -106,7 +96,9 @@ const Board = () => {
           </tr>
           <tr>
             <td colSpan={2} />
-            <SwapButton onClick={swapPoints} />
+            <td colSpan={2}>
+              <S.SwapOutlinedButton onClick={swapPoints} />
+            </td>
             <td colSpan={2} />
           </tr>
 
@@ -134,7 +126,7 @@ const Board = () => {
 
       <Results values={results} />
 
-    </Container>
+    </S.Container>
   )
 }
 
