@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import Image from "next/image";
+import { SwapOutlined } from '@ant-design/icons';
+import styled from 'styled-components';
 import Header from '../components/Header';
 import Point from '../components/Point';
 import Set from '../components/Set';
@@ -8,12 +10,24 @@ import MinusButton from '../components/MinusButton';
 import PlusButton from '../components/PlusButton';
 import ReloadButton from '../components/ReloadButton';
 import Results from '../components/Results';
-import * as S from './styles';
 
 export interface Result {
   pointA: number;
   pointB: number;
 };
+
+export const Container = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  flex-direction: column;
+`;
+
+export const SwapOutlinedButton = styled(SwapOutlined)`
+  font-size: 20px;
+`;
 
 const Board = () => {
   const [pointA, setPointA] = useState<number>(0);
@@ -84,7 +98,7 @@ const Board = () => {
   }
 
   return (
-    <S.Container>
+    <Container>
       <table>
         <tbody>
           <tr>
@@ -97,7 +111,7 @@ const Board = () => {
           <tr>
             <td colSpan={2} />
             <td colSpan={2}>
-              <S.SwapOutlinedButton onClick={swapPoints} />
+              <SwapOutlinedButton onClick={swapPoints} />
             </td>
             <td colSpan={2} />
           </tr>
@@ -126,7 +140,7 @@ const Board = () => {
 
       <Results values={results} />
 
-    </S.Container>
+    </Container>
   )
 }
 
