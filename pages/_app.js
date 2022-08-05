@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: normal;
   }
 
-  body, html {
+  body, html, input {
     color: ${props => (props.whiteColor ? 'white' : 'black')};
     font-size: 25px;
     font-family: 'Asap-Condensed-Bold';
