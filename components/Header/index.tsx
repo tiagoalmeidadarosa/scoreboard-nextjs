@@ -2,18 +2,20 @@ import { EditOutlined, CheckOutlined } from '@ant-design/icons';
 import React, { useState } from 'react';
 import * as S from './styles';
 
-const Header = () => {
-  const DEFAULT_TEAM_A_NAME = 'TIME A';
-  const DEFAULT_TEAM_B_NAME = 'TIME B';
-  const [firstTeamName, setFirstTeamName] = useState<string>(DEFAULT_TEAM_A_NAME);
-  const [secondTeamName, setSecondTeamName] = useState<string>(DEFAULT_TEAM_B_NAME);
+interface HeaderProps {
+  firstTeamName: string;
+  secondTeamName: string;
+  setFirstTeamName: (value: string) => void;
+  setSecondTeamName: (value: string) => void;
+}
 
+const Header = (props: HeaderProps) => {
   return (
     <tr>
       <td colSpan={2}>
         <ChangeName
-          teamName={firstTeamName}
-          setTeamName={setFirstTeamName}
+          teamName={props.firstTeamName}
+          setTeamName={props.setFirstTeamName}
         />
       </td>
       <td colSpan={2}>
@@ -21,8 +23,8 @@ const Header = () => {
       </td>
       <td colSpan={2}>
         <ChangeName
-          teamName={secondTeamName}
-          setTeamName={setSecondTeamName}
+          teamName={props.secondTeamName}
+          setTeamName={props.setSecondTeamName}
         />
       </td>
     </tr>

@@ -30,11 +30,16 @@ export const SwapOutlinedButton = styled(SwapOutlined)`
 `;
 
 const Board = () => {
+  const DEFAULT_TEAM_A_NAME = 'TIME A';
+  const DEFAULT_TEAM_B_NAME = 'TIME B';
+
   const [pointA, setPointA] = useState<number>(0);
   const [pointB, setPointB] = useState<number>(0);
   const [setA, setSetA] = useState<number>(0);
   const [setB, setSetB] = useState<number>(0);
   const [results, setResults] = useState<Result[]>([]);
+  const [firstTeamName, setFirstTeamName] = useState<string>(DEFAULT_TEAM_A_NAME);
+  const [secondTeamName, setSecondTeamName] = useState<string>(DEFAULT_TEAM_B_NAME);
 
   const removePointA = () => {
     if (pointA > 0) {
@@ -95,6 +100,11 @@ const Board = () => {
     results.forEach((result) => r.push({ pointA: result.pointB, pointB: result.pointA }));
 
     setResults(r);
+
+    let firstName = firstTeamName;
+    let secondName = secondTeamName;
+    setFirstTeamName(secondName);
+    setSecondTeamName(firstName);
   }
 
   return (
@@ -116,7 +126,12 @@ const Board = () => {
             <td colSpan={2} />
           </tr>
 
-          <Header />
+          <Header 
+            firstTeamName={firstTeamName}
+            setFirstTeamName={setFirstTeamName}
+            secondTeamName={secondTeamName}
+            setSecondTeamName={setSecondTeamName}
+          />
 
           <tr>
             <Point value={pointA} />
